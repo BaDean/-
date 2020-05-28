@@ -1,0 +1,11 @@
+<form sex="{{obj.sex}}"
+idcard="{{obj.id_num}}"
+mobile="{{obj.tel}}"
+labnum="{{obj.lib_num}}" 
+labname="{{obj.lib_name}}"
+isLeft="{{obj.is_leave}}"
+isSick="{{obj.is_hot}}"
+week ="{{obj.week}}" 
+weeknum="{{obj.week_num}}"
+carnum="{{obj.transportation}}"
+desc ="{{obj.remake}}" bind:agree="agree" bind:disagree="disagree" showButtons="{{!history}}" showButton="{{false}}" ></form>

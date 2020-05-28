@@ -1,0 +1,57 @@
+
+<view class='top-container' bindtap="goUser">
+  <image class='bg-img' src='../../images/more/bg.png'></image>
+  <view hidden='{{isLogin}}' class='user'>
+    <open-data class='avatar-img' type="userAvatarUrl"></open-data>
+    <view class='user-info-mobile'>
+      <text>{{userInfo.name}}  {{userInfo.unit}}  {{userInfo.depart}}</text>
+    </view>
+  </view>
+</view>
+<view class="container">
+  <scroll-view scroll-x scroll-with-animation class="tab-view" scroll-left="{{scrollLeft}}">
+    <view wx:for="{{tabbar}}" wx:key="id" class="tab-bar-item {{currentTab==index ? 'active' : ''}}" data-current="{{index}}" catchtap="swichNav">
+      <text class="tab-bar-title">{{item}}</text>
+    </view>
+  </scroll-view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight - 80}}px">
+    <swiper-item wx:for="{{tabbar}}" wx:key="id">
+      <scroll-view scroll-y class="scoll-y">
+        <block wx:if="{{index == 2}}">
+          <view class="containers">
+            <picker class='top' bindchange='classify' mode='selector' name='classify' range='{{classify}}' wx:if="{{!history}}">
+              <view class="classify">审核类型: {{classify[_index]}}</view>
+            </picker>
+            <view class="list">
+              <block class="item" wx:for="{{list}}" wx:key="assess_id">
+                <card class="card" obj="{{item}}" bind:enterDetail="enterDetail" history="{{history}}"  admin="{{(item.is_ok_yuanbu==3)&&(userInfo.user_type_id==3)}}"/>
+                <card class="card" obj="{{item}}" bind:enterDetail="enterDetail" history="{{history}}"  admin="{{userInfo.user_type_id==2}}"/>
+              </block>
+            </view>
+          </view>
+          <view class="downloadExcel" catchtap="openExcel" wx:if="{{userInfo.user_type_id==3}}">
+            <text class="text">下载Excel表</text>
+          </view>
+        </block>
+        <block wx:if="{{index == 1}}">
+
+                  <form  idcard="{{userInfo.id_num}}" mobile="{{userInfo.tel}}" sex="{{userInfo.sex}}" collegeid="{{userInfo.college_id}}" college="{{userInfo.college}}" disable="0" bind:commit="commit"></form> 
+        </block>
+        <block wx:if="{{(index == 0) }}">
+          <view class="containers">
+            <picker class='top' bindchange='classify' mode='selector' name='classify' range='{{classify}}' wx:if="{{!history}}">
+              <view class="classify">审核类型: {{classify[_index]}}</view>
+            </picker>
+            <view class="list">
+              <block class="item" wx:for="{{list}}" wx:key="assess_id">
+                <card class="card" obj="{{item}}" bind:enterDetail="enterDetail" history="{{history}}"/>
+              </block>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>
+
+

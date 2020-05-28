@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "教职工信息上报系统",
+  "usingComponents": {
+    "tui-card": "../../../components/card/card",
+    "form": "../../../components/form/form",
+    "card": "/components/cards/card"
+  }
+
+}

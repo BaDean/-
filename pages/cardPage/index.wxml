@@ -1,0 +1,10 @@
+<view class="containers">
+    <picker class='top' bindchange='classify' mode='selector' name='classify' range='{{classify}}'>
+        <view class="classify">审核类型: {{classify[_index]}}</view>
+    </picker>
+    <view class="list">
+        <block class="item" wx:for="{{list}}" wx:key="assess_id">
+            <card class="card" obj="{{item}}" bind:enterDetail="enterDetail" history="{{history}}" />
+        </block>
+    </view>
+</view>
