@@ -1,0 +1,45 @@
+.container{
+    position: relative;
+    width: 700rpx;
+    border-radius: 15px;
+    box-shadow: 5px 4px 8px #666;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20rpx
+}
+
+.userInfo{
+    position: relative;
+    left: 50rpx;
+}
+
+.number{
+    position: relative;
+    left: 50rpx;
+}
+
+.date{
+    position: relative;
+    left: 50rpx;
+}
+
+.status{
+    position: relative;
+    left: 50rpx
+}
+
+.result{
+    position: relative;
+    left: 50rpx;
+}
+
+.tip{
+    position: absolute;
+    right: 30rpx;
+    bottom: 50rpx;
+    display: inline-block;
+    color: #666
+}

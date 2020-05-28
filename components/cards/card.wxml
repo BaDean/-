@@ -1,0 +1,48 @@
+<view class="container" bind:tap="detail" wx:if="{{admin}}">
+    <view class="userInfo" wx:if="{{!history}}">
+        <view class="employeeId">工号:{{obj.employee_id}}</view>
+        <view class="name">姓名:{{obj.name}}</view>
+        <view class="college">单位:{{obj.college}}</view>
+    </view>
+    <view class="number">预约号:{{obj.assess_id}}</view>
+    <view class="date">日期:{{obj.date}}</view>
+    <view class="status">
+        <view class="yuan">院级审核:{{tool.format(obj.is_ok_yuanbu)}}</view>
+        <view class="xiao">校级审核:{{tool.format(obj.is_ok_keyanyuan)}}</view>
+    </view>
+    <view class="result">最终结论:{{tool.formatResult(obj.is_ok_keyanyuan,obj.is_ok_yuanbu)}}</view>
+    <view class="tip">点击查看详情</view>
+</view>
+
+
+
+<wxs module="tool">
+    var format = function(parm){
+        if(parm==1){
+            return "未审核"
+        }
+        if(parm==2){
+            return "未通过"
+        }
+        if(parm==3){
+            return "已通过"
+        }
+    }
+
+    var formatResult = function(keyanyuan,yuanbu){
+        if(keyanyuan==2 || yuanbu==2){
+            return "未通过"
+        }
+        if(keyanyuan==1 || yuanbu==1){
+            return "正在审核"
+        }
+        if(keyanyuan==3&&yuanbu==3){
+            return "已通过"
+        }
+    }
+
+    module.exports = {
+        format:format,
+        formatResult:formatResult
+    }
+</wxs>
